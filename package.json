@@ -1,0 +1,23 @@
+{
+  "name": "hutbooking",
+  "version": "1.0.0",
+  "description": "mean stack project with angular2 ",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+    "dependencies": {
+    "bcryptjs": "*",
+    "body-parser": "*",
+    "cors": "*",
+    "express": "*",
+    "jsonwebtoken": "*",
+    "mongoose": "*",
+    "passport": "*",
+    "passport-jwt": "*",
+    "multer": "*"
+  },
+  "author": "shadab ahmed khan",
+  "license": "ISC"
+}
