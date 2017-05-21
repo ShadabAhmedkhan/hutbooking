@@ -58,4 +58,16 @@ User.comparePassword(password, user.password, (err, isMatch) =>{
 router.get('/profile', passport.authenticate('jwt', {session:false}), (req, res, next) => {
   res.json({user: req.user});
 });
+// find all user
+router.get('/alluser' ,(req,res,next)=>{
+    User.getUser((err,user)=>{
+ if(err){
+     throw err;
+ }
+ res.json(user);
+});
+});
+
+
+
  module.exports = router;

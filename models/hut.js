@@ -20,9 +20,9 @@ const hutSchema = mongoose.Schema({
     //     required: true
     // }
 
-    // user:{
-    //     type: String
-    // },
+    user:{
+        type: String
+    },
     name:{
         type: String,
         required: true
@@ -63,9 +63,9 @@ const hutSchema = mongoose.Schema({
     description:{
         type: String,
         required: true
-    }
+    },
     // imgPath:[],
-    // bookedDates:[]
+    bookedDates:[]
 });
 
 const Huts = module.exports = mongoose.model('hut', hutSchema); 
@@ -84,7 +84,32 @@ module.exports.getHutBylocation =  ( callback,limit) => {
     // const query = {location: location}
     Huts.find( callback);
 }
-// module.exports.addHuts = function (newHuts, callback) {
-//      newHuts.save(callback);
-   
-// }
+
+
+module.exports.getHutsByEmail = function(email,callback){
+    // console.log('email');
+    Huts.find({user: email},callback);
+}
+module.exports.deleteHut = function(id, callback){
+    Huts.remove({_id: id}, callback);
+}
+//GETTING HUTS BY ID
+module.exports.updateHut = function(bookInfo,callback){
+    // hut.findOne({_id : bookInfo.id}, callback);
+    Huts.update({_id: bookInfo.id},
+    {$push: { bookedDates: bookInfo.date}}, callback);
+}
+
+module.exports.updateMyHut = function(updateData, callback){
+
+Huts.update({_id:updateData.id},
+{$set:{
+        name: updateData.name,
+        rooms: updateData.rooms,
+        mPAllowed: updateData.mPAllowed,
+        rent: updateData.rent,
+        description: updateData.description   
+}
+
+}, callback);
+}

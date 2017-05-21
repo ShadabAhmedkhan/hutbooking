@@ -36,8 +36,11 @@ app.use(passport.session());
 
 require('./config/passport')(passport);
 app.use('/users', users);
-app.use('/hut', huts);
+// app.use('/get', users);
 
+app.use('/hut', huts);
+app.use('/delete', huts);
+// app.use('/put', huts);
 app.get('/', (req,res) => {
     res.send('invalid');
 });
